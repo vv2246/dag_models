@@ -94,7 +94,7 @@ def price_dag(n, m, c, seed=None):
     # List of existing nodes, with nodes repeated once for each adjacent edge
     repeated_nodes=[]
     # Start adding the other n-m nodes. The first node is m.
-    source=m+1
+    source=m
     while source<n:
         # Add edges to m nodes from the source.
         G.add_edges_from(zip(targets,[source]*m))
