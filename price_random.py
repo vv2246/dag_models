@@ -19,8 +19,6 @@ import numpy as np
 def random_dag(n, m, seed=None):
     """Return random graph using Price cummulative advantage model. With p=0
 
-    
-
     Parameters
     ----------
     n : int
@@ -32,15 +30,12 @@ def random_dag(n, m, seed=None):
         c = m Directed Barabasi-Albert
     seed : int, optional
         Seed for random number generator (default=None).
-
     Returns
     -------
     G : Graph
-
     Notes
     -----
     The initialization is a graph with with m nodes and no edges.
-
     References
     ----------
     .. [1] de-Solla Price Network of Scientific Publications
@@ -54,19 +49,19 @@ def random_dag(n, m, seed=None):
 
     # Add m initial nodes (m0 in barabasi-speak)
     targets, G = complete_dag(m,m)
-    
+
     # List of existing nodes, with nodes repeated once for each adjacent edge
     nodes=set()
     # Start adding the other n-m nodes. The first node is m.
-    source=m+1
+    source=m
     while source<n:
         # Add edges to m nodes from the source.
         G.add_edges_from(zip(targets,[source]*m))
-        print(targets,source)
+        
         # Add one node to the list for each new edge just created.
         nodes.update(targets)
         # And the new node "source" has c times  to add to the list.
-        
+
         nodes.add(source)
         # Now choose m unique nodes from the existing nodes
         # Pick uniformly from repeated_nodes (preferential attachement)
