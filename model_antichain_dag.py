@@ -77,7 +77,7 @@ class Model:
             G.node[t][time_label] = y
             for s in range(0,t):
                 r= random.random()
-                if r < Model.f(t,s,x,pos[s][0],c,N):
+                if r > Model.f(t,s,x,pos[s][0],c,N):
                     G.add_edge(s,t)
         if TR==True:           
             tr(G)
